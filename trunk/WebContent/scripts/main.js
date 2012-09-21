@@ -3,8 +3,12 @@
  */
 function fetchNews() {
 	if(this.isNewsLoaded == 'N'){
-		alert("News Not Yet Loaded..loading");
-		this.newsHTML = "<img alt='LOADING..' src='resources/images/loading.gif'>";
+		alert(this.newsDIV.id);
+		this.newsHTML = '<div class="contentAreaColumn" style="background-color: red; margin-left: 0px;">'+this.newsDIV.id+'</div>'
+						+'<div class="contentAreaColumn" style="background-color: blue; margin-left: 360px;">'+this.newsDIV.id+'</div>'
+						+'<div class="contentAreaColumn" style="background-color: lime; margin-left: 720px;">'+this.newsDIV.id+'</div>'
+						+'<div class="contentAreaColumn" style="background-color: maroon; margin-left: 1080px;">'+this.newsDIV.id+'</div>'
+						+'<div class="contentAreaColumn" style="background-color: purple; margin-left: 1440px;">'+this.newsDIV.id+'</div>';
 		//make a request and set HTML. then set isNewsLoaded = 'Y'
 	}
 	this.newsDIV.innerHTML = this.newsHTML;
@@ -30,6 +34,7 @@ var defaultViewPosition = 2;
 var currentViewPosition = 2;
 
 function init() {
+	
 	for (i=0;i<newsObjects.length;i++)
 	{
 		var tempDiv = document.getElementById("news"+i);
@@ -75,7 +80,7 @@ function scrollDivDown() {
 	currentViewPosition++;
 	if(currentViewPosition == maxNewsObjects){
 		loadMoreNews();
-		currentViewPosition = defaultViewPosition;
+		currentViewPosition = 0;
 	}
 	step = ((document.getElementById('contentArea').scrollHeight)/maxNewsObjects)*currentViewPosition;
 	document.getElementById('contentArea').scrollTop = step;
@@ -92,34 +97,29 @@ function scrollDivUp() {
 	currentViewPosition--;
 	if(currentViewPosition == -1){
 		loadMoreNews();
-		currentViewPosition = defaultViewPosition;
+		currentViewPosition = 4;
 	}
 	step = ((document.getElementById('contentArea').scrollHeight)/maxNewsObjects)*currentViewPosition;
 	document.getElementById('contentArea').scrollTop = step;
 	toLeft('contentArea');
 }
 
-function loadMoreNews() {
-	
+function toTop() {	
+	toLeft('contentArea');
+	currentViewPosition = 0;
+	document.getElementById('contentArea').scrollTop = 0;
 }
 
-var prevScrollTop = -1;
-
-function toTop(id) {
-	document.getElementById(id).scrollTop = 0;
-}
-
-function toBottom(id) {
-	var i = document.getElementById(id).scrollTop;
-	var j = document.getElementById(id).scrollHeight;
-	var mousPosDiv = document.getElementById('mousePos');
-	mousPosDiv.innerHTML = i + ',' + j;
-	if (prevScrolTop != i && i < j) {
-		prevScrollTop = i;
-		document.getElementById(id).scrollTop += step;
-		timerDown = setTimeout("toBottom('" + id + "')", 10);
-	} else {
+function toBottom() {	
+	toLeft('contentArea');
+	currentViewPosition++;
+	if(currentViewPosition == maxNewsObjects){
 		clearTimeout(timerDown);
+		currentViewPosition--;
+	}else{
+		step = ((document.getElementById('contentArea').scrollHeight)/maxNewsObjects)*currentViewPosition;
+		document.getElementById('contentArea').scrollTop = step;
+		timerDown = setTimeout("toBottom()", 100);
 	}
 }
 
@@ -127,7 +127,9 @@ function toPoint(id) {
 	document.getElementById(id).scrollTop = 100;
 }
 
-
+function loadMoreNews() {
+	
+}
 
 scrollStep = 10;
 
@@ -148,7 +150,7 @@ function scrollDivLeft(id) {
 	document.getElementById(id).scrollLeft += scrollStep;
 	i = document.getElementById(id).scrollLeft;
 	if (i % 360 != 0) {
-		timerRight = setTimeout("scrollDivLeft('" + id + "')", 5);
+		timerRight = setTimeout("scrollDivLeft('" + id + "')", 0);
 	}
 }
 
@@ -157,7 +159,7 @@ function scrollDivRight(id) {
 	document.getElementById(id).scrollLeft -= scrollStep;
 	i = document.getElementById(id).scrollLeft;
 	if (i % 360 != 0) {
-		timerLeft = setTimeout("scrollDivRight('" + id + "')", 5);
+		timerLeft = setTimeout("scrollDivRight('" + id + "')", 0);
 	}
 }
 
