@@ -1,0 +1,8 @@
+.ddimgtooltip{
+display:none;
+position:absolute;
+background:#000;
+color: red;
+z-index:2000;
+padding: 4px;
+}
