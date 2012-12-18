@@ -1,0 +1,79 @@
+	
+/* // Easy Slider */
+
+
+.list{width:176px; height:150px; float:left; color:#FFFFFF; margin-right:20px;}
+.list02{width:435px; margin-left:30px;float:left; color:#FFFFFF;}
+.mt40{margin-top:35px;}
+
+.list02 img,
+.list img{ float:left;}
+
+.list02 .right,
+.list .right{ 
+	float: left;
+    padding: 0 0 0 15px;
+    width: 245px;
+}
+
+.list02 .right,
+.list .right{ 
+
+    padding: 0;
+	margin-top:5px;
+  
+}
+
+.list02 .right h2,
+.list .right h2{
+	 font-size: 17px;
+    font-weight: bold;
+    margin: 0
+}
+
+
+.list02 .right p,
+.list .right p{
+	margin:0!important;
+	font-size:12px!important;
+	font-weight:normal!important;
+	/* height:70px; */
+	line-height:16px!important;
+}
+.vote01{ 
+	margin: 10px 0 0 0;
+	float:left;
+  }
+.vote{
+	background-color: #1b1b1b;
+    color: #FFFFFF;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 0 5px 10px;
+    text-decoration: none;
+}
+
+.vote span{ font-weight: normal;
+    margin: 0 0 0 10px;
+    padding: 0 10px 0 0;}
+
+.voteno{margin: 0 5px 0 0 !important;
+    padding: 0 !important;}
+	
+.voteNw{ background-color: #000;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0 !important;
+    padding: 5px 10px !important;
+}
+
+
+.voteCount{ background: url("../images/thumUp.gif") no-repeat scroll left bottom transparent;
+    font-size: 19px;
+    padding: 0 0 0 28px;
+}
+
+.share{ float:left; margin: 16px 0 0 20px;} 
+
+.dis01{ margin-top:5px;}
